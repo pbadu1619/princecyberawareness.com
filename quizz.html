@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Awareness Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 1em 0;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+        .category {
+            margin-bottom: 20px;
+        }
+        .category h2 {
+            color: #3498db;
+            cursor: pointer;
+            background: #ecf0f1;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 0;
+        }
+        .questions {
+            display: none;
+            padding: 10px;
+            background: #fff;
+            border-radius: 5px;
+        }
+        .question {
+            margin: 10px 0;
+            background: #ecf0f1;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .submit-btn, .mark-btn {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .feedback {
+            margin-top: 5px;
+            font-weight: bold;
+        }
+        footer {
+            text-align: center;
+            background: #2c3e50;
+            color: white;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Cybersecurity Awareness Quiz</h1>
+        <p>Test your knowledge on various cybersecurity topics!</p>
+    </header>
+    <main>
+        <!-- Phishing Awareness -->
+        <div class="category">
+            <h2 onclick="toggleQuestions('phishing')">Phishing Awareness</h2>
+            <div class="questions" id="phishing">
+                <div class="question">
+                    <p><strong>Question 1:</strong> What is phishing?</p>
+                    <ul>
+                        <li><input type="radio" name="q1-p" id="q1a" value="incorrect"><label for="q1a">A type of malware.</label></li>
+                        <li><input type="radio" name="q1-p" id="q1b" value="correct"><label for="q1b">An attempt to obtain sensitive information by disguising as a trustworthy entity.</label></li>
+                        <li><input type="radio" name="q1-p" id="q1c" value="incorrect"><label for="q1c">A form of password hacking.</label></li>
+                        <li><input type="radio" name="q1-p" id="q1d" value="incorrect"><label for="q1d">A type of firewall.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <div class="question">
+                    <p><strong>Question 2:</strong> What is a common sign of a phishing email?</p>
+                    <ul>
+                        <li><input type="radio" name="q2-p" id="q2a" value="correct"><label for="q2a">Suspicious links and urgent requests.</label></li>
+                        <li><input type="radio" name="q2-p" id="q2b" value="incorrect"><label for="q2b">High-quality graphics.</label></li>
+                        <li><input type="radio" name="q2-p" id="q2c" value="incorrect"><label for="q2c">Personalized greetings.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <div class="question">
+                    <p><strong>Question 3:</strong> How should you verify the legitimacy of a suspicious email?</p>
+                    <ul>
+                        <li><input type="radio" name="q3-p" id="q3a" value="incorrect"><label for="q3a">Click the link to check.</label></li>
+                        <li><input type="radio" name="q3-p" id="q3b" value="correct"><label for="q3b">Contact the organization directly using known contact details.</label></li>
+                        <li><input type="radio" name="q3-p" id="q3c" value="incorrect"><label for="q3c">Forward the email to friends.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <div class="question">
+                    <p><strong>Question 4:</strong> What should you do if you receive a phishing email?</p>
+                    <ul>
+                        <li><input type="radio" name="q4-p" id="q4a" value="incorrect"><label for="q4a">Reply to the sender.</label></li>
+                        <li><input type="radio" name="q4-p" id="q4b" value="incorrect"><label for="q4b">Click all links to check.</label></li>
+                        <li><input type="radio" name="q4-p" id="q4c" value="correct"><label for="q4c">Report and delete it.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <div class="question">
+                    <p><strong>Question 5:</strong> What is a spear-phishing attack?</p>
+                    <ul>
+                        <li><input type="radio" name="q5-p" id="q5a" value="incorrect"><label for="q5a">A general phishing scam targeting everyone.</label></li>
+                        <li><input type="radio" name="q5-p" id="q5b" value="correct"><label for="q5b">A targeted phishing attack aimed at specific individuals.</label></li>
+                        <li><input type="radio" name="q5-p" id="q5c" value="incorrect"><label for="q5c">A malware attack.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <button class="mark-btn" onclick="markCategory('phishing')">Mark</button>
+                <p class="feedback" id="score-phishing"></p>
+            </div>
+        </div>
+
+        <!-- Password Management -->
+        <div class="category">
+            <h2 onclick="toggleQuestions('password')">Password Management</h2>
+            <div class="questions" id="password">
+                <div class="question">
+                    <p><strong>Question 1:</strong> What is the main purpose of password management?</p>
+                    <ul>
+                        <li><input type="radio" name="q1-pm" id="q1a1" value="incorrect"><label for="q1a1">Track user activity.</label></li>
+                        <li><input type="radio" name="q1-pm" id="q1a2" value="correct"><label for="q1a2">Secure access to accounts.</label></li>
+                        <li><input type="radio" name="q1-pm" id="q1a3" value="incorrect"><label for="q1a3">Store personal data.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <div class="question">
+                    <p><strong>Question 2:</strong> What is a strong password?</p>
+                    <ul>
+                        <li><input type="radio" name="q2-pm" id="q2a1" value="incorrect"><label for="q2a1">A short and simple password.</label></li>
+                        <li><input type="radio" name="q2-pm" id="q2a2" value="correct"><label for="q2a2">A long password with a mix of letters, numbers, and symbols.</label></li>
+                        <li><input type="radio" name="q2-pm" id="q2a3" value="incorrect"><label for="q2a3">Your name or birthdate.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <div class="question">
+                    <p><strong>Question 3:</strong> Why should you avoid using the same password across multiple sites?</p>
+                    <ul>
+                        <li><input type="radio" name="q3-pm" id="q3a1" value="correct"><label for="q3a1">It increases the risk if one account is compromised.</label></li>
+                        <li><input type="radio" name="q3-pm" id="q3a2" value="incorrect"><label for="q3a2">It’s too complicated to remember.</label></li>
+                        <li><input type="radio" name="q3-pm" id="q3a3" value="incorrect"><label for="q3a3">It saves time when logging in.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <div class="question">
+                    <p><strong>Question 4:</strong> What is the best way to store passwords?</p>
+                    <ul>
+                        <li><input type="radio" name="q4-pm" id="q4a1" value="incorrect"><label for="q4a1">Write them down on a paper.</label></li>
+                        <li><input type="radio" name="q4-pm" id="q4a2" value="correct"><label for="q4a2">Use a password manager.</label></li>
+                        <li><input type="radio" name="q4-pm" id="q4a3" value="incorrect"><label for="q4a3">Save them in a text file on your computer.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <div class="question">
+                    <p><strong>Question 5:</strong> What is two-factor authentication (2FA)?</p>
+                    <ul>
+                        <li><input type="radio" name="q5-pm" id="q5a1" value="incorrect"><label for="q5a1">A method to create strong passwords.</label></li>
+                        <li><input type="radio" name="q5-pm" id="q5a2" value="correct"><label for="q5a2">An extra layer of security requiring two forms of verification.</label></li>
+                        <li><input type="radio" name="q5-pm" id="q5a3" value="incorrect"><label for="q5a3">A new type of antivirus software.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <button class="mark-btn" onclick="markCategory('password')">Mark</button>
+                <p class="feedback" id="score-password"></p>
+            </div>
+        </div>
+
+        <!-- Hacking -->
+        <div class="category">
+            <h2 onclick="toggleQuestions('hacking')">Hacking</h2>
+            <div class="questions" id="hacking">
+                <div class="question">
+                    <p><strong>Question 1:</strong> What is ethical hacking?</p>
+                    <ul>
+                        <li><input type="radio" name="q1-h" id="q1h1" value="correct"><label for="q1h1">Hacking performed with permission to identify security flaws.</label></li>
+                        <li><input type="radio" name="q1-h" id="q1h2" value="incorrect"><label for="q1h2">Illegal access to someone's data.</label></li>
+                        <li><input type="radio" name="q1-h" id="q1h3" value="incorrect"><label for="q1h3">Sharing passwords online.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <div class="question">
+                    <p><strong>Question 2:</strong> What is a common method used by hackers to gain access?</p>
+                    <ul>
+                        <li><input type="radio" name="q2-h" id="q2h1" value="incorrect"><label for="q2h1">Writing code.</label></li>
+                        <li><input type="radio" name="q2-h" id="q2h2" value="correct"><label for="q2h2">Exploiting weak passwords.</label></li>
+                        <li><input type="radio" name="q2-h" id="q2h3" value="incorrect"><label for="q2h3">Using social media.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <div class="question">
+                    <p><strong>Question 3:</strong> What is a DDoS attack?</p>
+                    <ul>
+                        <li><input type="radio" name="q3-h" id="q3h1" value="incorrect"><label for="q3h1">A type of malware.</label></li>
+                        <li><input type="radio" name="q3-h" id="q3h2" value="correct"><label for="q3h2">An attack that overloads a system with traffic, making it unavailable.</label></li>
+                        <li><input type="radio" name="q3-h" id="q3h3" value="incorrect"><label for="q3h3">A way to secure a website.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <div class="question">
+                    <p><strong>Question 4:</strong> What does the term "zero-day exploit" mean?</p>
+                    <ul>
+                        <li><input type="radio" name="q4-h" id="q4h1" value="incorrect"><label for="q4h1">A patch released to fix a security bug.</label></li>
+                        <li><input type="radio" name="q4-h" id="q4h2" value="incorrect"><label for="q4h2">A virus that replicates.</label></li>
+                        <li><input type="radio" name="q4-h" id="q4h3" value="correct"><label for="q4h3">A vulnerability that is exploited before a fix is available.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <div class="question">
+                    <p><strong>Question 5:</strong> What is a brute-force attack?</p>
+                    <ul>
+                        <li><input type="radio" name="q5-h" id="q5h1" value="correct"><label for="q5h1">An attempt to guess passwords by trying many combinations.</label></li>
+                        <li><input type="radio" name="q5-h" id="q5h2" value="incorrect"><label for="q5h2">A method to repair software.</label></li>
+                        <li><input type="radio" name="q5-h" id="q5h3" value="incorrect"><label for="q5h3">Encrypting data.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <button class="mark-btn" onclick="markCategory('hacking')">Mark</button>
+                <p class="feedback" id="score-hacking"></p>
+            </div>
+        </div>
+
+        <!-- Malware -->
+        <div class="category">
+            <h2 onclick="toggleQuestions('malware')">Malware</h2>
+            <div class="questions" id="malware">
+                <div class="question">
+                    <p><strong>Question 1:</strong> What is malware?</p>
+                    <ul>
+                        <li><input type="radio" name="q1-m" id="q1m1" value="correct"><label for="q1m1">Malicious software designed to harm or exploit systems.</label></li>
+                        <li><input type="radio" name="q1-m" id="q1m2" value="incorrect"><label for="q1m2">A firewall application.</label></li>
+                        <li><input type="radio" name="q1-m" id="q1m3" value="incorrect"><label for="q1m3">A type of secure software.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <div class="question">
+                    <p><strong>Question 2:</strong> Which of these is a common type of malware?</p>
+                    <ul>
+                        <li><input type="radio" name="q2-m" id="q2m1" value="incorrect"><label for="q2m1">Antivirus.</label></li>
+                        <li><input type="radio" name="q2-m" id="q2m2" value="correct"><label for="q2m2">Ransomware.</label></li>
+                        <li><input type="radio" name="q2-m" id="q2m3" value="incorrect"><label for="q2m3">Secure Boot.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <div class="question">
+                    <p><strong>Question 3:</strong> How does a Trojan horse typically spread?</p>
+                    <ul>
+                        <li><input type="radio" name="q3-m" id="q3m1" value="correct"><label for="q3m1">By pretending to be legitimate software.</label></li>
+                        <li><input type="radio" name="q3-m" id="q3m2" value="incorrect"><label for="q3m2">Through text messages.</label></li>
+                        <li><input type="radio" name="q3-m" id="q3m3" value="incorrect"><label for="q3m3">Via secure downloads.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <div class="question">
+                    <p><strong>Question 4:</strong> What is a key characteristic of spyware?</p>
+                    <ul>
+                        <li><input type="radio" name="q4-m" id="q4m1" value="incorrect"><label for="q4m1">It deletes files.</label></li>
+                        <li><input type="radio" name="q4-m" id="q4m2" value="incorrect"><label for="q4m2">It encrypts data.</label></li>
+                        <li><input type="radio" name="q4-m" id="q4m3" value="correct"><label for="q4m3">It secretly monitors user activity.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <div class="question">
+                    <p><strong>Question 5:</strong> How can you protect your system from malware?</p>
+                    <ul>
+                        <li><input type="radio" name="q5-m" id="q5m1" value="incorrect"><label for="q5m1">Ignoring software updates.</label></li>
+                        <li><input type="radio" name="q5-m" id="q5m2" value="correct"><label for="q5m2">Using antivirus software and keeping it updated.</label></li>
+                        <li><input type="radio" name="q5-m" id="q5m3" value="incorrect"><label for="q5m3">Sharing passwords with friends.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <button class="mark-btn" onclick="markCategory('malware')">Mark</button>
+                <p class="feedback" id="score-malware"></p>
+            </div>
+        </div>
+
+        <!-- Social Engineering -->
+        <div class="category">
+            <h2 onclick="toggleQuestions('social')">Social Engineering</h2>
+            <div class="questions" id="social">
+                <div class="question">
+                    <p><strong>Question 1:</strong> What is social engineering in cybersecurity?</p>
+                    <ul>
+                        <li><input type="radio" name="q1-se" id="q1se1" value="correct"><label for="q1se1">Manipulating people to divulge confidential information.</label></li>
+                        <li><input type="radio" name="q1-se" id="q1se2" value="incorrect"><label for="q1se2">Installing software on a computer.</label></li>
+                        <li><input type="radio" name="q1-se" id="q1se3" value="incorrect"><label for="q1se3">Using encryption.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <div class="question">
+                    <p><strong>Question 2:</strong> Which of the following is an example of a social engineering attack?</p>
+                    <ul>
+                        <li><input type="radio" name="q2-se" id="q2se1" value="correct"><label for="q2se1">Phishing emails.</label></li>
+                        <li><input type="radio" name="q2-se" id="q2se2" value="incorrect"><label for="q2se2">Firewall configuration.</label></li>
+                        <li><input type="radio" name="q2-se" id="q2se3" value="incorrect"><label for="q2se3">Installing antivirus software.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <div class="question">
+                    <p><strong>Question 3:</strong> What is the goal of a social engineer?</p>
+                    <ul>
+                        <li><input type="radio" name="q3-se" id="q3se1" value="correct"><label for="q3se1">To trick individuals into giving away sensitive information.</label></li>
+                        <li><input type="radio" name="q3-se" id="q3se2" value="incorrect"><label for="q3se2">To secure a network.</label></li>
+                        <li><input type="radio" name="q3-se" id="q3se3" value="incorrect"><label for="q3se3">To design a secure system.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <div class="question">
+                    <p><strong>Question 4:</strong> What is pretexting in social engineering?</p>
+                    <ul>
+                        <li><input type="radio" name="q4-se" id="q4se1" value="incorrect"><label for="q4se1">A type of encryption.</label></li>
+                        <li><input type="radio" name="q4-se" id="q4se2" value="correct"><label for="q4se2">Creating a fabricated scenario to steal information.</label></li>
+                        <li><input type="radio" name="q4-se" id="q4se3" value="incorrect"><label for="q4se3">Updating software.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <div class="question">
+                    <p><strong>Question 5:</strong> How can you protect yourself from social engineering attacks?</p>
+                    <ul>
+                        <li><input type="radio" name="q5-se" id="q5se1" value="correct"><label for="q5se1">By being cautious of unsolicited requests for information.</label></li>
+                        <li><input type="radio" name="q5-se" id="q5se2" value="incorrect"><label for="q5se2">Sharing passwords over the phone.</label></li>
+                        <li><input type="radio" name="q5-se" id="q5se3" value="incorrect"><label for="q5se3">Always accepting friend requests on social media.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <button class="mark-btn" onclick="markCategory('social')">Mark</button>
+                <p class="feedback" id="score-social"></p>
+            </div>
+        </div>
+
+        <!-- Data Encryption -->
+        <div class="category">
+            <h2 onclick="toggleQuestions('encryption')">Data Encryption</h2>
+            <div class="questions" id="encryption">
+                <div class="question">
+                    <p><strong>Question 1:</strong> What is encryption?</p>
+                    <ul>
+                        <li><input type="radio" name="q1-e" id="q1e1" value="correct"><label for="q1e1">The process of converting data into a secure format.</label></li>
+                        <li><input type="radio" name="q1-e" id="q1e2" value="incorrect"><label for="q1e2">Deleting data.</label></li>
+                        <li><input type="radio" name="q1-e" id="q1e3" value="incorrect"><label for="q1e3">Copying data to another location.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <div class="question">
+                    <p><strong>Question 2:</strong> What is the main purpose of data encryption?</p>
+                    <ul>
+                        <li><input type="radio" name="q2-e" id="q2e1" value="correct"><label for="q2e1">To protect data from unauthorized access.</label></li>
+                        <li><input type="radio" name="q2-e" id="q2e2" value="incorrect"><label for="q2e2">To make data readable by everyone.</label></li>
+                        <li><input type="radio" name="q2-e" id="q2e3" value="incorrect"><label for="q2e3">To delete data permanently.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <div class="question">
+                    <p><strong>Question 3:</strong> What is a common type of encryption algorithm?</p>
+                    <ul>
+                        <li><input type="radio" name="q3-e" id="q3e1" value="correct"><label for="q3e1">AES (Advanced Encryption Standard).</label></li>
+                        <li><input type="radio" name="q3-e" id="q3e2" value="incorrect"><label for="q3e2">HTTP (Hypertext Transfer Protocol).</label></li>
+                        <li><input type="radio" name="q3-e" id="q3e3" value="incorrect"><label for="q3e3">HTML (Hypertext Markup Language).</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <div class="question">
+                    <p><strong>Question 4:</strong> What does a public key do in encryption?</p>
+                    <ul>
+                        <li><input type="radio" name="q4-e" id="q4e1" value="correct"><label for="q4e1">It is used to encrypt data that only a private key can decrypt.</label></li>
+                        <li><input type="radio" name="q4-e" id="q4e2" value="incorrect"><label for="q4e2">It deletes data automatically.</label></li>
+                        <li><input type="radio" name="q4-e" id="q4e3" value="incorrect"><label for="q4e3">It is used to format data.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <div class="question">
+                    <p><strong>Question 5:</strong> How can you ensure the security of encrypted data?</p>
+                    <ul>
+                        <li><input type="radio" name="q5-e" id="q5e1" value="correct"><label for="q5e1">By using strong, unique keys and regularly updating them.</label></li>
+                        <li><input type="radio" name="q5-e" id="q5e2" value="incorrect"><label for="q5e2">By sharing keys publicly.</label></li>
+                        <li><input type="radio" name="q5-e" id="q5e3" value="incorrect"><label for="q5e3">By not using encryption.</label></li>
+                    </ul>
+                    <button class="submit-btn" onclick="submitAnswer(this)">Submit</button>
+                </div>
+                <button class="mark-btn" onclick="markCategory('encryption')">Mark</button>
+                <p class="feedback" id="score-encryption"></p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Cybersecurity Awareness Quiz</p>
+          <div class="right-align">
+            Developer
+            <i><b>Badu Prince</b></i>
+        </div>
+    </footer>
+
+    <script>
+        function toggleQuestions(category) {
+            const questions = document.getElementById(category);
+            questions.style.display = questions.style.display === 'none' || questions.style.display === '' ? 'block' : 'none';
+        }
+
+        function submitAnswer(button) {
+            button.style.display = 'none'; // Hides the submit button after submission
+        }
+
+        function markCategory(category) {
+            const questions = document.getElementById(category).getElementsByClassName('question');
+            let score = 0;
+            let total = questions.length;
+            for (let i = 0; i < questions.length; i++) {
+                const inputs = questions[i].querySelectorAll('input[type="radio"]');
+                for (let j = 0; j < inputs.length; j++) {
+                    if (inputs[j].checked && inputs[j].value === 'correct') {
+                        score++;
+                    }
+                }
+            }
+            document.getElementById(`score-${category}`).innerText = `Your Score: ${score}/${total}`;
+        }
+    </script>
+</body>
+</html>
